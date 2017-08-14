@@ -1,8 +1,13 @@
 # ReadingKanjiInKana
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/reading_kanji_in_kana`. To experiment with that code, run `bin/console` for an interactive prompt.
+## A gem returning 'Yomigana' (reading Japanese kanji in kana) by using a gem 'natto'
+This gem returns 'Yomigana' (reading Japanese kanji in kana).
+This is a wrapper of the gem 'natto'.
 
-TODO: Delete this and the text above, and describe your gem
+You need to install 'MeCab' before using. 
+
+To install MeCab, please consult 'http://taku910.github.io/mecab/'
+
 
 ## Installation
 
@@ -22,7 +27,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+test = ReadingKanjiInKana::Kanji.new
+test.kanji = '仮名' # => '仮名'
+test.opt = '-N 5 -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd'  # => '-N 5 -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd'
+ary = test.kanji_to_yomi # => ["カメイ", "カナ", "カリ", "ナ", "メイ"]  :output 5-Best yomigana as an array because of option
+```
 
 ## Development
 
@@ -32,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/reading_kanji_in_kana. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/LicaOka/reading_kanji_in_kana. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
