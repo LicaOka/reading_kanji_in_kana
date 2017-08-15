@@ -4,22 +4,24 @@ require "natto"
 
 module ReadingKanjiInKana
   class Kanji
-    attr_accessor :kanji, :opt
+    attr_accessor :opt
 
-    def initialize
-      @kanji = ''
-      @opt = ''
+    def initialize(option=nil)
+      if option == nil || option == ''
+      else
+        @opt = option.dup
+      end
     end
 
-    def kanji_to_yomi
-      if kanji == ''
+    def to_yomi(kanji=nil)
+      if kanji == nil || kanji == ''
         p 'ReadingKanjiInKana::Kanji::kanji_to_yomi error: the input string is null. please input `kanji` string.'
         return nil
       end
 
       text = kanji.dup
 
-      if opt == ''
+      if opt == nil || opt == ''
         nm = Natto::MeCab.new
       else
         nm = Natto::MeCab.new(opt)
@@ -33,8 +35,8 @@ module ReadingKanjiInKana
       end
 
       str_ary.uniq!
-
-      str_ary
+      yomi = str_ary.join(',')
+      yomi
     end
   end
 end
