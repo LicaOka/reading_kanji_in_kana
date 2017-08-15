@@ -7,21 +7,18 @@ module ReadingKanjiInKana
     attr_accessor :opt
 
     def initialize(option=nil)
-      if option == nil || option == ''
-      else
-        @opt = option.dup
-      end
+      @opt = option.dup unless option == nil
     end
 
     def to_yomi(kanji=nil)
-      if kanji == nil || kanji == ''
+      if kanji == nil
         p 'ReadingKanjiInKana::Kanji::kanji_to_yomi error: the input string is null. please input `kanji` string.'
         return nil
       end
 
       text = kanji.dup
 
-      if opt == nil || opt == ''
+      if opt == nil
         nm = Natto::MeCab.new
       else
         nm = Natto::MeCab.new(opt)
